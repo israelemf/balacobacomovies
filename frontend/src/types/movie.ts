@@ -12,8 +12,9 @@ export type MoviePage = {
     totalPages: number;
     totalElements: number;
     size: number;
-    number:number;
+    number: number;
     first: boolean;
     numberOfElements: number;
     empty: boolean;
 }
+
