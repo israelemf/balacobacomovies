@@ -16,7 +16,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
-
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -27,7 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		if(Arrays.asList(env.getActiveProfiles()).contains("test")) {
 			http.headers().frameOptions().disable();
 		}
-		
 		http.cors().and().csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.authorizeRequests().anyRequest().permitAll();
@@ -36,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
-		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "DELETE", "OPTIONS"));
+		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
