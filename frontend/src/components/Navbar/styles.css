@@ -1,10 +1,9 @@
 
 header {
-    background-color: var(--color-primary);
+    background-color: #5c2020;
     height: 60px;
     display: flex;
     align-items: center;
-    
 }
 
 .dsmovie-nav-content {
@@ -20,6 +19,11 @@ header {
     font-size: 24px;
 }
 
+.dsmovie-nav-content h1:hover { 
+    transition-delay: 3ms;
+    color: #d3d3d3;
+}
+
 
 .dsmovie-contact-container {
     display: flex;
@@ -29,4 +33,8 @@ header {
 .dsmovie-contact-link {
     font-size: 12px;
     margin:0 0 0 10px;
+}
+
+.dsmovie-contact-link:hover {
+    color: #d3d3d3;
 }

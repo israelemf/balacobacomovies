@@ -1,10 +1,13 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Movie } from 'types/movie';
 import { BASE_URL } from 'utils/requests';
 import { validateEmail } from 'utils/validate';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 import './styles.css'
+import Stack from '@mui/material/Stack';
 
 type Props = {
     movieId: string;
@@ -16,6 +19,8 @@ function FormCard({ movieId }: Props) {
 
     const [movie, setMovie] = useState<Movie>();
 
+    const [rating, setValue] = useState<number | null>(1);
+
     useEffect(() => {
         axios.get(`${BASE_URL}/movies/${movieId}`)
             .then(response => {
@@ -24,14 +29,13 @@ function FormCard({ movieId }: Props) {
     }, [movieId]);
 
 
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
 
         const email = (event.target as any).email.value;
-        const score = (event.target as any).score.value;
-
-        
+        const score = rating;
 
         if (!validateEmail(email)) {
             return;
@@ -63,25 +67,40 @@ function FormCard({ movieId }: Props) {
                         <label htmlFor="email">Informe seu email</label>
                         <input type="email" className="form-control" id="email" />
                     </div>
-                    <div className="form-group dsmovie-form-group">
-                        <label htmlFor="score">Informe sua avaliação</label>
-                        <select className="form-control" id="score">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
+                    <Stack spacing={-2.5}>
+                        <div className="form-group dsmovie-form-group">
+                            <label htmlFor="score">Informe sua avaliação</label>
+                        </div>
+                        <Box
+                            sx={{
+                                '& > legend': { mt: 2 },
+                            }}
+                        >
+
+                            <Rating
+                                name="size-small"
+                                size="medium"
+                                value={rating}
+                                onChange={(event, newValue) => {
+                                    setValue(newValue);
+                                }}
+                            />
+                        </Box>
+                    </Stack>
+
                     <div className="dsmovie-form-btn-container">
                         <button type="submit" className="btn btn-primary dsmovie-btn" >Salvar</button>
                     </div>
+                    <div className="dsmovie-form-btn-container">
+                        <Link to="/">
+                            <button className="btn btn-primary dsmovie-btn mt-3">Cancelar</button>
+                        </Link>
+                    </div>
                 </form>
-                <Link to="/">
-                    <button className="btn btn-primary dsmovie-btn mt-3">Cancelar</button>
-                </Link>
+
             </div>
         </div>
+
     )
 }
 

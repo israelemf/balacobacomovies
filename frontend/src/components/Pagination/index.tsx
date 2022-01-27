@@ -1,4 +1,6 @@
 import { ReactComponent as Arrow } from 'assets/img/arrow.svg'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { MoviePage } from 'types/movie';
 import './styles.css'
 
@@ -14,12 +16,12 @@ function Pagination({ page, onChange }: Props) {
             <div className="dsmovie-pagination-box">
                 <button className="dsmovie-pagination-button"
                     disabled={page.first} onClick={() => onChange(page.number - 1)} >
-                    <Arrow />
+                    <ArrowBackIosNewIcon />
                 </button>
                 <p>{`${page.number + 1} de ${page.totalPages}`}</p>
                 <button className="dsmovie-pagination-button"
                     disabled={page.last} onClick={() => onChange(page.number + 1)} >
-                    <Arrow className="dsmovie-flip-horizontal" />
+                    <ArrowForwardIosIcon />
                 </button>
             </div>
         </div>
