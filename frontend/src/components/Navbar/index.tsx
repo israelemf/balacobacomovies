@@ -6,8 +6,7 @@ function Navbar() {
         <header>
             <nav className="container">
                 <div className="dsmovie-nav-content">
-                    <a href="/"><h1>DSMovie</h1></a>
-                    <a href="/"><h1>DSMovie</h1></a>
+                    <a href="/"><h1>Pirocoptero</h1></a>
                     <a href="https://github.com/israelemf" target="_blank" rel="noreferrer">
                         <div className="dsmovie-contact-container">
                             <GithubIcon />
