@@ -1,4 +1,3 @@
-import { ReactComponent as Arrow } from 'assets/img/arrow.svg'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { MoviePage } from 'types/movie';

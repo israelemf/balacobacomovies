@@ -5,5 +5,4 @@ import com.dev.dsmovie.entities.Movie;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 	
-	
 }
